@@ -1,0 +1,203 @@
+<!--
+Copyright 2017 Next Century Corporation
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../paper-dialog/paper-dialog.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
+
+<!--
+A Polymer Element showing a styled modal dialog.
+
+### Example
+```html
+<styled-dialog>
+  <div>Content</div>
+</styled-dialog>
+```
+
+@demo demo/index.html
+-->
+
+<dom-module id="styled-dialog">
+  <template>
+    <style include="iron-flex"></style>
+
+    <style>
+      :host {
+        display: block;
+      }
+
+      paper-dialog {
+        background-color: white;
+        border-radius: 5px;
+        margin: 50px;
+        overflow: auto;
+      }
+
+      .fill {
+        height: 100%;
+        width: 100%;
+      }
+
+      .fill .inside {
+        /* Expect average users to have screen resolutions of about 1000 pixels by 800 pixels (and include space for the margins). */
+        /* This prevents elements from wrapping and looking odd if the browser is not at maximum size. */
+        min-height: 700px;
+        min-width: 900px;
+      }
+
+      paper-icon-button {
+        --paper-icon-button: {
+          height: 20px;
+          width: 20px;
+          padding: 0;
+        };
+      }
+
+      paper-icon-button ::content iron-icon {
+        --iron-icon-height: 20px;
+        --iron-icon-width: 20px;
+      }
+
+      .inside ::content > *,
+      .inside ::content ul > *,
+      .inside ::content .padded > * {
+        margin: 5px;
+      }
+
+      .inside ::content ul {
+        margin: 0;
+        padding-left: 20px;
+      }
+
+      .inside ::content .bold {
+        color: var(--primary-text-color);
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      .inside ::content .name {
+        color: var(--secondary-text-color);
+        font-size: 14px;
+        line-height: 20px;
+        min-height: 20px;
+        text-transform: uppercase;
+        white-space: nowrap;
+        min-width: 100px;
+      }
+
+      .inside ::content .note {
+        font-style: italic;
+      }
+
+      .inside ::content .text {
+        color: var(--primary-text-color);
+        font-size: 18px;
+        line-height: 20px;
+        min-height: 20px;
+      }
+
+      .inside ::content .divider {
+        border: 1px solid #eee;
+      }
+
+      .inside ::content .inline-button {
+        /* Align the height of the button with the height of the paper-input-container elements. */
+        margin: 5px 10px;
+      }
+
+      .inside ::content .right-space {
+        margin-right: 10px;
+      }
+
+      .inside ::content .tall {
+        line-height: 40px;
+        min-height: 40px;
+      }
+    </style>
+
+    <paper-dialog id="dialog" class$="[[_getStyleClass(fill)]]" modal entry-animation="fade-in-animation" exit-animation="fade-out-animation">
+      <div class="inside layout vertical">
+        <div class="layout horizontal">
+          <span id="header" class="bold flex">[[header]]</span>
+          <paper-icon-button icon="clear" dialog-confirm title="Close"></paper-icon-button>
+        </div>
+
+        <div class="divider"></div>
+
+        <content></content>
+      </div>
+    </paper-dialog>
+  </template>
+
+  <script>
+  (function() {
+    'use strict';
+
+    Polymer({
+      is: 'styled-dialog',
+
+      properties: {
+        /**
+         * (Optional)
+         *
+         * The header of the dialog.
+         *
+         * @type {String}
+         * @default 'Info'
+         */
+        header: {
+          type: String,
+          value: 'Info'
+        },
+
+        /**
+         * (Optional)
+         *
+         * Whether the dialog should expand to fill the screen.
+         *
+         * @type {Boolean}
+         * @default false
+         */
+        fill: {
+          type: Boolean,
+          value: false
+        }
+      },
+
+      _getStyleClass: function(fill) {
+        return fill ? 'fill' : '';
+      },
+
+      /**
+       * Closes the dialog.
+       */
+      close: function() {
+        this.$$('#dialog').close();
+      },
+
+      /**
+       * Opens the dialog.
+       */
+      open: function() {
+        this.$$('#dialog').open();
+      }
+    });
+  })();
+  </script>
+</dom-module>

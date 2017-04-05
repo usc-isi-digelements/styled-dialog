@@ -1,0 +1,116 @@
+<!--
+Copyright 2017 Next Century Corporation
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../web-component-tester/browser.js"></script>
+  <link rel="import" href="../styled-dialog.html">
+</head>
+
+<body>
+  <test-fixture id="styled-dialog-fixture">
+    <template>
+      <styled-dialog>
+        <div id="testContent">Test Content</div>
+      </styled-dialog>
+    </template>
+  </test-fixture>
+
+  <script>
+    suite('styled-dialog tests', function() {
+      var element;
+
+      setup(function(done) {
+        element = fixture('styled-dialog-fixture');
+        element.header = 'Test Header';
+        flush(done);
+      });
+
+      test('properties are set to correct values', function() {
+        expect(element.fill).to.be.false;
+        expect(element.header).to.equal('Test Header');
+      });
+
+      test('does have dialog', function() {
+        var dialog = element.$$('paper-dialog');
+        expect(dialog).to.exist;
+        expect(dialog.classList.contains('fill')).to.be.false;
+        expect(dialog.id).to.equal('dialog');
+        expect(dialog.modal).to.be.true;
+        expect(dialog.opened).to.be.false;
+      });
+
+      test('does have header', function() {
+        var header = element.$$('#header');
+        expect(header).to.exist;
+        expect(header.innerHTML).to.equal('Test Header');
+      });
+
+      test('does have close button', function() {
+        var button = element.$$('paper-icon-button');
+        expect(button).to.exist;
+        expect(button.icon).to.equal('clear');
+        expect(button.title).to.equal('Close');
+      });
+
+      test('does have content', function() {
+        var content = element.$$('content');
+        expect(content).to.exist;
+      });
+
+      test('does add fill to dialog style class if fill is true', function(done) {
+        element.fill = true;
+
+        flush(function() {
+          expect(element.fill).to.be.true;
+          var dialog = element.$$('paper-dialog');
+          expect(dialog).to.exist;
+          expect(dialog.classList.contains('fill')).to.be.true;
+          done();
+        });
+      });
+
+      test('open does open the dialog', function(done) {
+        element.open();
+
+        flush(function() {
+          var dialog = element.$$('paper-dialog');
+          expect(dialog).to.exist;
+          expect(dialog.opened).to.be.true;
+          done();
+        });
+      });
+
+      test('close does close the dialog', function(done) {
+        var dialog = element.$$('paper-dialog');
+        dialog.opened = true;
+
+        element.close();
+
+        flush(function() {
+          var dialog = element.$$('paper-dialog');
+          expect(dialog).to.exist;
+          expect(dialog.opened).to.be.false;
+          done();
+        });
+      });
+    });
+  </script>
+</body>
+</html>
