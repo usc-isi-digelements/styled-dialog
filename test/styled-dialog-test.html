@@ -45,6 +45,7 @@ limitations under the License.
       test('properties are set to correct values', function() {
         expect(element.fill).to.be.false;
         expect(element.header).to.equal('Test Header');
+        expect(element.opened).to.be.false;
       });
 
       test('does have dialog', function() {
@@ -93,6 +94,7 @@ limitations under the License.
           var dialog = element.$$('paper-dialog');
           expect(dialog).to.exist;
           expect(dialog.opened).to.be.true;
+          expect(element.opened).to.be.true;
           done();
         });
       });
@@ -107,6 +109,7 @@ limitations under the License.
           var dialog = element.$$('paper-dialog');
           expect(dialog).to.exist;
           expect(dialog.opened).to.be.false;
+          expect(element.opened).to.be.false;
           done();
         });
       });

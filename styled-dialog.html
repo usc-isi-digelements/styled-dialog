@@ -131,7 +131,7 @@ A Polymer Element showing a styled modal dialog.
       }
     </style>
 
-    <paper-dialog id="dialog" class$="[[_getStyleClass(fill)]]" modal entry-animation="fade-in-animation" exit-animation="fade-out-animation">
+    <paper-dialog id="dialog" class$="[[_getStyleClass(fill)]]" modal opened="{{opened}}" entry-animation="fade-in-animation" exit-animation="fade-out-animation">
       <div class="inside layout vertical">
         <div class="layout horizontal">
           <span id="header" class="styled-dialog-bold flex">[[header]]</span>
@@ -177,9 +177,29 @@ A Polymer Element showing a styled modal dialog.
         fill: {
           type: Boolean,
           value: false
+        },
+
+        /**
+         * (Optional|Output)
+         *
+         * Whether the dialog is opened.
+         *
+         * @type {Boolean}
+         * @default false
+         */
+        opened: {
+          notify: true,
+          type: Boolean
         }
       },
 
+      /**
+       * Returns the style class of the dialog.
+       *
+       * @param {Boolean} fill
+       * @return {String}
+       * @private
+       */
       _getStyleClass: function(fill) {
         return fill ? 'fill' : '';
       },
