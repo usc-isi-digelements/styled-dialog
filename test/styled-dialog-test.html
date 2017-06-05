@@ -38,13 +38,13 @@ limitations under the License.
 
       setup(function(done) {
         element = fixture('styled-dialog-fixture');
-        element.header = 'Test Header';
         flush(done);
       });
 
       test('properties are set to correct values', function() {
         expect(element.fill).to.be.false;
-        expect(element.header).to.equal('Test Header');
+        expect(element.header).to.equal('');
+        expect(element.modal).to.be.false;
         expect(element.opened).to.be.false;
       });
 
@@ -53,21 +53,52 @@ limitations under the License.
         expect(dialog).to.exist;
         expect(dialog.classList.contains('fill')).to.be.false;
         expect(dialog.id).to.equal('dialog');
-        expect(dialog.modal).to.be.true;
+        expect(dialog.modal).to.be.false;
         expect(dialog.opened).to.be.false;
+        expect(dialog.withBackdrop).to.be.true;
       });
 
-      test('does have header', function() {
+      test('does have modal dialog if modal is true', function() {
+        element.modal = true;
+        var dialog = element.$$('paper-dialog');
+        expect(dialog).to.exist;
+        expect(dialog.modal).to.be.true;
+      });
+
+      test('does not have header if header is blank', function() {
         var header = element.$$('#header');
-        expect(header).to.exist;
-        expect(header.innerHTML).to.equal('Test Header');
+        expect(header).to.not.exist;
       });
 
-      test('does have close button', function() {
+      test('does have header if header is defined', function(done) {
+        element.header = 'Test Header';
+        flush(function() {
+          var header = element.$$('#header');
+          expect(header).to.exist;
+          expect(header.innerHTML).to.equal('Test Header');
+          done();
+        });
+      });
+
+      test('does not have close button if header is blank', function() {
         var button = element.$$('paper-icon-button');
-        expect(button).to.exist;
-        expect(button.icon).to.equal('clear');
-        expect(button.title).to.equal('Close');
+        expect(button).to.not.exist;
+      });
+
+      test('does have close button if header is defined', function(done) {
+        element.header = 'Test Header';
+        flush(function() {
+          var button = element.$$('paper-icon-button');
+          expect(button).to.exist;
+          expect(button.icon).to.equal('clear');
+          expect(button.title).to.equal('Close');
+          done();
+        });
+      });
+
+      test('does have inside', function() {
+        var inside = element.$$('.inside');
+        expect(inside).to.exist;
       });
 
       test('does have content', function() {

@@ -21,7 +21,7 @@ limitations under the License.
 <link rel="import" href="../paper-icon-button/paper-icon-button.html">
 
 <!--
-A Polymer Element showing a styled modal dialog.
+A Polymer Element showing a styled dialog.
 
 ### Example
 ```html
@@ -49,6 +49,10 @@ A Polymer Element showing a styled modal dialog.
         overflow: auto;
       }
 
+      .inside {
+        max-width: 900px;
+      }
+
       .fill {
         height: 100%;
         width: 100%;
@@ -59,6 +63,7 @@ A Polymer Element showing a styled modal dialog.
         /* This prevents elements from wrapping and looking odd if the browser is not at maximum size. */
         min-height: 700px;
         min-width: 900px;
+        max-width: none;
       }
 
       paper-icon-button {
@@ -98,10 +103,14 @@ A Polymer Element showing a styled modal dialog.
         min-height: 20px;
         text-transform: uppercase;
         white-space: nowrap;
-        min-width: 100px;
+        min-width: 50px;
       }
 
       .inside ::content .styled-dialog-note {
+        color: var(--primary-text-color);
+        font-size: 14px;
+        line-height: 20px;
+        min-height: 20px;
         font-style: italic;
       }
 
@@ -131,14 +140,16 @@ A Polymer Element showing a styled modal dialog.
       }
     </style>
 
-    <paper-dialog id="dialog" class$="[[_getStyleClass(fill)]]" modal opened="{{opened}}" entry-animation="fade-in-animation" exit-animation="fade-out-animation">
+    <paper-dialog id="dialog" class$="[[_getStyleClass(fill)]]" modal="[[modal]]" opened="{{opened}}" with-backdrop entry-animation="fade-in-animation" exit-animation="fade-out-animation">
       <div class="inside layout vertical">
-        <div class="layout horizontal">
-          <span id="header" class="styled-dialog-bold flex">[[header]]</span>
-          <paper-icon-button id="close" icon="clear" dialog-confirm title="Close"></paper-icon-button>
-        </div>
+        <template is="dom-if" if="[[header]]">
+          <div class="layout horizontal">
+            <span id="header" class="styled-dialog-bold flex">[[header]]</span>
+            <paper-icon-button id="close" icon="clear" dialog-confirm title="Close"></paper-icon-button>
+          </div>
 
-        <div class="styled-dialog-divider"></div>
+          <div class="styled-dialog-divider"></div>
+        </template>
 
         <content></content>
       </div>
@@ -156,14 +167,14 @@ A Polymer Element showing a styled modal dialog.
         /**
          * (Optional)
          *
-         * The header of the dialog.
+         * The header of the dialog.  The header and the close button are hidden if `header` is blank.
          *
          * @type {String}
-         * @default 'Info'
+         * @default ''
          */
         header: {
           type: String,
-          value: 'Info'
+          value: ''
         },
 
         /**
@@ -175,6 +186,19 @@ A Polymer Element showing a styled modal dialog.
          * @default false
          */
         fill: {
+          type: Boolean,
+          value: false
+        },
+
+        /**
+         * (Optional)
+         *
+         * Whether the dialog should be modal.
+         *
+         * @type {Boolean}
+         * @default false
+         */
+        modal: {
           type: Boolean,
           value: false
         },
