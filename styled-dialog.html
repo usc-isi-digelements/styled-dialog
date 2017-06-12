@@ -18,6 +18,7 @@ limitations under the License.
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
 <link rel="import" href="../paper-dialog/paper-dialog.html">
+<link rel="import" href="../paper-dialog/paper-dialog-scrollable.html">
 <link rel="import" href="../paper-icon-button/paper-icon-button.html">
 
 <!--
@@ -46,6 +47,11 @@ A Polymer Element showing a styled dialog.
         background-color: white;
         border-radius: 5px;
         margin: 50px;
+        overflow: auto;
+      }
+
+      paper-dialog-scrollable {
+        max-height: 900px;
         overflow: auto;
       }
 
@@ -151,7 +157,9 @@ A Polymer Element showing a styled dialog.
           <div class="styled-dialog-divider"></div>
         </template>
 
-        <content></content>
+        <paper-dialog-scrollable>
+          <content></content>
+        </paper-dialog-scrollable>
       </div>
     </paper-dialog>
   </template>
