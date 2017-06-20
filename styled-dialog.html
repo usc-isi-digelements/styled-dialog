@@ -44,19 +44,25 @@ A Polymer Element showing a styled dialog.
       }
 
       paper-dialog {
-        background-color: white;
-        border-radius: 5px;
-        margin: 50px;
-        overflow: auto;
+        --paper-dialog: {
+          background-color: white;
+          border-radius: 5px;
+          margin: 50px;
+          min-height: 600px;
+          min-width: 1000px;
+        };
       }
 
       paper-dialog-scrollable {
-        max-height: 900px;
-        overflow: auto;
+        --paper-dialog-scrollable: {
+          min-height: 900px;
+          min-width: 900px;
+          overflow: auto;
+        };
       }
 
       .inside {
-        max-width: 900px;
+        max-width: 1000px;
       }
 
       .fill {

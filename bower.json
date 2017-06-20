@@ -1,7 +1,7 @@
 {
   "name": "styled-dialog",
   "description": "A Polymer Element showing a styled modal dialog.",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "authors": ["Next Century Corporation"],
   "license": "Apache-2.0",
   "keywords": [
