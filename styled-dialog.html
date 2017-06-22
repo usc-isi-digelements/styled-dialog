@@ -58,6 +58,7 @@ A Polymer Element showing a styled dialog.
           min-height: 900px;
           min-width: 900px;
           overflow: auto;
+          padding: 0;
         };
       }
 
@@ -91,7 +92,8 @@ A Polymer Element showing a styled dialog.
         --iron-icon-width: 20px;
       }
 
-      .inside ::content > *,
+      .inside ::content > *:not(paper-dialog-scrollable), 
+      paper-dialog-scrollable ::content > #scrollable > *,
       .inside ::content .styled-dialog-list > *,
       .inside ::content .styled-dialog-padded > * {
         margin: 5px;
