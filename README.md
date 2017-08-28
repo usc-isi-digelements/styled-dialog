@@ -15,8 +15,6 @@ A Polymer Element showing a styled modal dialog.
 
 Custom property              | Description               | Default
 -----------------------------|---------------------------|--------
-`--styled-dialog-max-height` | Max height of the dialog. | none
-`--styled-dialog-min-height` | Min height of the dialog. | none
 `--styled-dialog-max-width`  | Max width of the dialog.  | none
 `--styled-dialog-min-width`  | Min width of the dialog.  | 900px
 
