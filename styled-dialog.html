@@ -31,6 +31,17 @@ A Polymer Element showing a styled dialog.
 </styled-dialog>
 ```
 
+### Styling
+
+`<styled-dialog>` provides the following custom properties and mixins for styling:
+
+Custom property              | Description               | Default
+-----------------------------|---------------------------|--------
+`--styled-dialog-max-height` | Max height of the dialog. | none
+`--styled-dialog-min-height` | Min height of the dialog. | none
+`--styled-dialog-max-width`  | Max width of the dialog.  | none
+`--styled-dialog-min-width`  | Min width of the dialog.  | 900px
+
 @demo demo/index.html
 -->
 
@@ -48,22 +59,27 @@ A Polymer Element showing a styled dialog.
           background-color: white;
           border-radius: 5px;
           margin: 50px;
-          min-height: 600px;
-          min-width: 1000px;
         };
       }
 
       paper-dialog-scrollable {
         --paper-dialog-scrollable: {
-          min-height: 900px;
-          min-width: 900px;
-          overflow: auto;
           padding: 0;
         };
       }
 
       .inside {
-        max-width: 1000px;
+        margin: 0;
+        padding: 0;
+        overflow: auto;
+      }
+
+      .inside-margin {
+        margin: 30px;
+        max-height: var(--styled-dialog-max-height, none);
+        min-height: var(--styled-dialog-min-height, none);
+        max-width: var(--styled-dialog-max-width, none);
+        min-width: var(--styled-dialog-min-width, 900px);
       }
 
       .fill {
@@ -72,11 +88,8 @@ A Polymer Element showing a styled dialog.
       }
 
       .fill .inside {
-        /* Expect average users to have screen resolutions of about 1000 pixels by 800 pixels (and include space for the margins). */
-        /* This prevents elements from wrapping and looking odd if the browser is not at maximum size. */
-        min-height: 700px;
-        min-width: 900px;
-        max-width: none;
+        height: 100%;
+        width: 100%;
       }
 
       paper-icon-button {
@@ -92,11 +105,11 @@ A Polymer Element showing a styled dialog.
         --iron-icon-width: 20px;
       }
 
-      .inside ::content > *:not(paper-dialog-scrollable), 
       paper-dialog-scrollable ::content > #scrollable > *,
+      .inside ::content .inside-margin > *:not(paper-dialog-scrollable),
       .inside ::content .styled-dialog-list > *,
       .inside ::content .styled-dialog-padded > * {
-        margin: 5px;
+        margin: 5px 0;
       }
 
       .inside ::content .styled-dialog-list {
@@ -156,18 +169,26 @@ A Polymer Element showing a styled dialog.
 
     <paper-dialog id="dialog" class$="[[_getStyleClass(fill)]]" modal="[[modal]]" opened="{{opened}}" with-backdrop entry-animation="fade-in-animation" exit-animation="fade-out-animation">
       <div class="inside layout vertical">
-        <template is="dom-if" if="[[header]]">
-          <div class="layout horizontal">
-            <span id="header" class="styled-dialog-bold flex">[[header]]</span>
-            <paper-icon-button id="close" icon="clear" dialog-confirm title="Close"></paper-icon-button>
-          </div>
+        <div class$="inside-margin layout vertical [[_isFlex(fill)]]">
+          <template is="dom-if" if="[[header]]">
+            <div class="layout horizontal">
+              <span id="header" class="styled-dialog-bold flex">[[header]]</span>
+              <paper-icon-button id="close" icon="clear" dialog-confirm title="Close"></paper-icon-button>
+            </div>
 
-          <div class="styled-dialog-divider"></div>
-        </template>
+            <div class="styled-dialog-divider"></div>
+          </template>
 
-        <paper-dialog-scrollable>
-          <content></content>
-        </paper-dialog-scrollable>
+          <template is="dom-if" if="[[!fill]]">
+            <content></content>
+          </template>
+
+          <template is="dom-if" if="[[fill]]">
+            <paper-dialog-scrollable class="flex">
+              <content></content>
+            </paper-dialog-scrollable>
+          </template>
+        </div>
       </div>
     </paper-dialog>
   </template>
@@ -242,6 +263,17 @@ A Polymer Element showing a styled dialog.
        */
       _getStyleClass: function(fill) {
         return fill ? 'fill' : '';
+      },
+
+      /**
+       * Returns the flex style class.
+       *
+       * @param {Boolean} fill
+       * @return {String}
+       * @private
+       */
+      _isFlex: function(fill) {
+        return fill ? 'flex' : '';
       },
 
       /**
