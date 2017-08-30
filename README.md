@@ -20,6 +20,33 @@ Custom property             | Description                        | Default
 `--styled-dialog-max-width` | Max width of the dialog.           | none
 `--styled-dialog-min-width` | Min width of the dialog.           | 900px
 
+`styled-dialog-styles.html` provides the following style classes:
+
+- styled-dialog-bold
+- styled-dialog-divider
+- styled-dialog-list
+- styled-dialog-name
+- styled-dialog-note
+- styled-dialog-padded
+- styled-dialog-right-space
+- styled-dialog-text
+- styled-dialog-tall
+
+Example Usage:
+
+```html
+<link rel="import" href="path/to/styled-dialog/styled-dialog-styles.html">
+<dom-module id="my-element">
+  <template>
+    <style include="styled-dialog-styles"></style>
+    <styled-dialog>
+      <div class="styled-dialog-text">text</div>
+    </styled-dialog>
+  </template>
+  <script> /* Define my-element */ </script>
+</dom-module>
+```
+
 ### Dependencies
 
 Dependencies are installed using [Bower](http://bower.io/):
