@@ -18,31 +18,48 @@ limitations under the License.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-  <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+  <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
   <link rel="import" href="../styled-dialog.html">
 </head>
 
 <body unresolved>
-  <template is="dom-bind" id="demo">
-    <div><a href="#" on-tap="openSmall">Click to Open (fill=false)</a></div>
-    <div><a href="#" on-tap="openLarge">Click to Open (fill=true)</a></div>
+  <dom-bind id="demo">
+    <template is="dom-bind">
+      <div><a href="#" on-tap="openNoFill">Click to Open (fill=false)</a></div>
+      <div><a href="#" on-tap="openFill">Click to Open (fill=true)</a></div>
 
-    <styled-dialog id="small">
-      <div>The quick brown fox jumped over the lazy dog.</div>
-    </styled-dialog>
+      <styled-dialog header="Styled Dialog Header" id="noFill">
+        <div class="styled-dialog-text">The quick brown fox jumped over the lazy dog. (styled-dialog-text)</div>
+        <div class="styled-dialog-divider"></div>
+        <div class="styled-dialog-bold">The quick brown fox jumped over the lazy dog. (styled-dialog-bold)</div>
+        <div class="styled-dialog-divider"></div>
+        <div class="styled-dialog-name">The quick brown fox jumped over the lazy dog. (styled-dialog-name)</div>
+        <div class="styled-dialog-divider"></div>
+        <div class="styled-dialog-note">The quick brown fox jumped over the lazy dog. (styled-dialog-note)</div>
+        <div class="styled-dialog-divider"></div>
+      </styled-dialog>
 
-    <styled-dialog id="large" fill>
-      <div>The quick brown fox jumped over the lazy dog.</div>
-    </styled-dialog>
-  </template>
+      <styled-dialog header="Styled Dialog Header" id="fill" fill>
+        <div class="styled-dialog-text">The quick brown fox jumped over the lazy dog. (styled-dialog-text)</div>
+        <div class="styled-dialog-divider"></div>
+        <div class="styled-dialog-bold">The quick brown fox jumped over the lazy dog. (styled-dialog-bold)</div>
+        <div class="styled-dialog-divider"></div>
+        <div class="styled-dialog-name">The quick brown fox jumped over the lazy dog. (styled-dialog-name)</div>
+        <div class="styled-dialog-divider"></div>
+        <div class="styled-dialog-note">The quick brown fox jumped over the lazy dog. (styled-dialog-note)</div>
+        <div class="styled-dialog-divider"></div>
+      </styled-dialog>
+    </template>
+  </dom-bind>
+
   <script>
     (function(document) {
       var demo = document.querySelector('#demo');
-      demo.openSmall = function() {
-        demo.$.small.open();
+      demo.openNoFill = function() {
+        demo.$.noFill.open();
       };
-      demo.openLarge = function() {
-        demo.$.large.open();
+      demo.openFill = function() {
+        demo.$.fill.open();
       };
     })(document);
   </script>
