@@ -82,6 +82,10 @@ Custom property                      | Description                        | Defa
       .inside-margin {
         padding: 30px;
         max-width: var(--styled-dialog-max-width, none);
+        min-width: var(--styled-dialog-min-width, none);
+      }
+
+      .fill .inside-margin {
         min-width: var(--styled-dialog-min-width, 900px);
       }
 
@@ -103,15 +107,16 @@ Custom property                      | Description                        | Defa
         };
       }
 
-      .styled-dialog-divider {
-        border: 1px solid #eee;
-        margin-bottom: 10px;
-      }
-
-      .styled-dialog-bold {
+      .bold-header {
         color: var(--primary-text-color);
         font-size: 20px;
         font-weight: bold;
+        margin-bottom: 10px;
+        margin-right: 10px;
+      }
+
+      .dividing-line {
+        border: 1px solid #eee;
         margin-bottom: 10px;
       }
     </style>
@@ -121,11 +126,11 @@ Custom property                      | Description                        | Defa
         <div class$="inside-margin layout vertical [[_isFlex(fill)]]">
           <template is="dom-if" if="[[header]]">
             <div class="layout horizontal">
-              <span id="header" class="styled-dialog-bold styled-dialog-right-space flex">[[header]]</span>
+              <span id="header" class="bold-header flex">[[header]]</span>
               <paper-icon-button id="close" icon="clear" dialog-confirm title="Close"></paper-icon-button>
             </div>
 
-            <div class="styled-dialog-divider"></div>
+            <div class="dividing-line"></div>
           </template>
 
           <template is="dom-if" if="[[!fill]]">
