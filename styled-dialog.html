@@ -36,12 +36,14 @@ A Polymer Element showing a styled dialog.
 
 `<styled-dialog>` provides the following custom properties and mixins for styling:
 
-Custom property             | Description                        | Default
-----------------------------|------------------------------------|--------
-`--primary-text-color`      | Color of the normal and bold text. | inherit
-`--secondary-text-color`    | Color of the name and note text.   | inherit
-`--styled-dialog-max-width` | Max width of the dialog.           | none
-`--styled-dialog-min-width` | Min width of the dialog.           | 900px
+Custom property                      | Description                        | Default
+-------------------------------------|------------------------------------|--------
+`--primary-text-color`               | Color of the normal and bold text. | inherit
+`--secondary-text-color`             | Color of the name and note text.   | inherit
+`--styled-dialog-max-width`          | Max width of the dialog.           | none
+`--styled-dialog-min-width`          | Min width of the dialog.           | 900px
+`--styled-dialog-style-mixin`        | Custom style mixin for the dialog. | none
+`--styled-dialog-inside-style-mixin` | Custom style mixin for the inside. | none
 
 @demo demo/index.html
 -->
@@ -60,6 +62,7 @@ Custom property             | Description                        | Default
           background-color: white;
           border-radius: 5px;
           margin: 50px;
+          @apply --styled-dialog-style-mixin;
         };
       }
 
@@ -73,6 +76,7 @@ Custom property             | Description                        | Default
         margin: 0;
         padding: 0;
         overflow: auto;
+        @apply --styled-dialog-inside-style-mixin;
       }
 
       .inside-margin {
