@@ -15,8 +15,8 @@ limitations under the License.
 -->
 
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../fontawesome-iconset/fa-all.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
-<link rel="import" href="../iron-icons/iron-icons.html">
 <link rel="import" href="../paper-dialog/paper-dialog.html">
 <link rel="import" href="../paper-dialog-scrollable/paper-dialog-scrollable.html">
 <link rel="import" href="../paper-icon-button/paper-icon-button.html">
@@ -99,20 +99,22 @@ Custom property                      | Description                        | Defa
         width: 100%;
       }
 
-      paper-icon-button {
-        --paper-icon-button: {
-          height: 20px;
-          width: 20px;
-          padding: 0;
-        };
-      }
-
       .bold-header {
         color: var(--primary-text-color);
-        font-size: 20px;
-        font-weight: bold;
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 30px;
+        min-height: 30px;
         margin-bottom: 10px;
-        margin-right: 10px;
+      }
+
+      paper-icon-button {
+        margin-left: 10px;
+        --paper-icon-button: {
+          height: 30px;
+          width: 30px;
+          padding: 0;
+        };
       }
 
       .dividing-line {
@@ -125,9 +127,9 @@ Custom property                      | Description                        | Defa
       <div class="inside layout vertical">
         <div class$="inside-margin layout vertical [[_isFlex(fill)]]">
           <template is="dom-if" if="[[header]]">
-            <div class="layout horizontal">
-              <span id="header" class="bold-header flex">[[header]]</span>
-              <paper-icon-button id="close" icon="clear" dialog-confirm title="Close"></paper-icon-button>
+            <div class="layout horizontal center bold-header">
+              <span id="header" class="flex">[[header]]</span>
+              <paper-icon-button id="close" icon="fa:times" dialog-confirm title="Close"></paper-icon-button>
             </div>
 
             <div class="dividing-line"></div>

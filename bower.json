@@ -1,7 +1,7 @@
 {
   "name": "styled-dialog",
   "description": "A Polymer Element showing a styled modal dialog.",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "authors": ["Next Century Corporation"],
   "license": "Apache-2.0",
   "keywords": [
@@ -16,6 +16,7 @@
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.2",
+    "fontawesome-iconset": "https://github.com/vangware/fontawesome-iconset.git#09ac70f619bb44d73fefc5f9524ae29ab217ed15",
     "iron-icons": "PolymerElements/iron-icons#^2.0.0",
     "iron-flex-layout": "PolymerElements/iron-flex-layout#^2.0.0",
     "paper-dialog": "PolymerElements/paper-dialog#^2.0.0",

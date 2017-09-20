@@ -31,6 +31,7 @@ Custom property                      | Description                        | Defa
 - styled-dialog-note
 - styled-dialog-padded
 - styled-dialog-right-space
+- styled-dialog-strong
 - styled-dialog-text
 - styled-dialog-tall
 
