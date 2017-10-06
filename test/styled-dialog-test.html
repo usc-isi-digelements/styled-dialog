@@ -101,9 +101,12 @@ limitations under the License.
         expect(inside).to.exist;
       });
 
-      test('does have content', function() {
-        var content = element.$$('slot');
-        expect(content).to.exist;
+      test('does have slots', function() {
+        var slots = Polymer.dom(element.root).querySelectorAll('slot');
+        expect(slots.length).to.equal(3);
+        expect(slots[0].getAttribute('name')).to.equal('top');
+        expect(slots[1].getAttribute('name')).to.be.null;
+        expect(slots[2].getAttribute('name')).to.equal('bottom');
       });
 
       test('does add fill to dialog style class if fill is true', function(done) {

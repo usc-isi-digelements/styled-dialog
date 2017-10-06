@@ -135,6 +135,8 @@ Custom property                      | Description                        | Defa
             <div class="dividing-line"></div>
           </template>
 
+          <slot name="top"></slot>
+
           <template is="dom-if" if="[[!fill]]">
             <styled-dialog-inside>
               <slot></slot>
@@ -148,6 +150,8 @@ Custom property                      | Description                        | Defa
               </styled-dialog-inside>
             </paper-dialog-scrollable>
           </template>
+
+          <slot name="bottom"></slot>
         </div>
       </div>
     </paper-dialog>
