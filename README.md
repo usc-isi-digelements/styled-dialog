@@ -15,8 +15,6 @@ A Polymer Element showing a styled modal dialog.
 
 Custom property                      | Description                        | Default
 -------------------------------------|------------------------------------|--------
-`--primary-text-color`               | Color of the normal and bold text. | inherit
-`--secondary-text-color`             | Color of the name and note text.   | inherit
 `--styled-dialog-max-width`          | Max width of the dialog.           | none
 `--styled-dialog-min-width`          | Min width of the dialog.           | 900px
 `--styled-dialog-style-mixin`        | Custom style mixin for the dialog. | none
