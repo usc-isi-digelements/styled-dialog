@@ -81,17 +81,17 @@ limitations under the License.
       });
 
       test('does not have close button if header is blank', function() {
-        var button = element.$$('paper-icon-button');
+        var button = element.$$('icon-button');
         expect(button).to.not.exist;
       });
 
       test('does have close button if header is defined', function(done) {
         element.header = 'Test Header';
         flush(function() {
-          var button = element.$$('paper-icon-button');
+          var button = element.$$('icon-button');
           expect(button).to.exist;
           expect(button.icon).to.equal('fa:times');
-          expect(button.title).to.equal('Close');
+          expect(button.titleTooltip).to.equal('Close');
           done();
         });
       });

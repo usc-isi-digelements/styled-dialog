@@ -15,11 +15,10 @@ limitations under the License.
 -->
 
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../fontawesome-iconset/fa-all.html">
+<link rel="import" href="../icon-button/icon-button.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../paper-dialog/paper-dialog.html">
 <link rel="import" href="../paper-dialog-scrollable/paper-dialog-scrollable.html">
-<link rel="import" href="../paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../paper-styles/color.html">
 <link rel="import" href="styled-dialog-inside.html">
 
@@ -108,13 +107,8 @@ Custom property                      | Description                        | Defa
         margin-bottom: 10px;
       }
 
-      paper-icon-button {
+      icon-button {
         margin-left: 10px;
-        --paper-icon-button: {
-          height: 30px;
-          width: 30px;
-          padding: 0;
-        };
       }
 
       .dividing-line {
@@ -129,7 +123,7 @@ Custom property                      | Description                        | Defa
           <template is="dom-if" if="[[header]]">
             <div class="layout horizontal center bold-header">
               <span id="header" class="flex">[[header]]</span>
-              <paper-icon-button id="close" icon="fa:times" dialog-confirm title="Close"></paper-icon-button>
+              <icon-button bigger id="close" icon="fa:times" dialog-confirm title-tooltip="Close"></icon-button>
             </div>
 
             <div class="dividing-line"></div>
