@@ -1,23 +1,17 @@
 {
   "name": "styled-dialog",
   "description": "A Polymer Element showing a styled modal dialog.",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "authors": ["Next Century Corporation"],
   "license": "Apache-2.0",
-  "keywords": [
-    "web-component",
-    "polymer"
-  ],
+  "keywords": ["web-component", "polymer"],
   "main": "styled-dialog.html",
-  "homepage": "https://github.com/DigElements/styled-dialog/",
-  "ignore": [
-    "/.*",
-    "/test/"
-  ],
+  "homepage": "",
+  "ignore": ["/.*", "/test/"],
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.2",
-    "fontawesome-iconset": "https://github.com/vangware/fontawesome-iconset.git#09ac70f619bb44d73fefc5f9524ae29ab217ed15",
-    "icon-button": "DigElements/icon-button#2.0.1",
+    "fontawesome-iconset": "../fontawesome-iconset",
+    "icon-button": "https://github.com/KimQ0126/icon-button.git#2.0.2",
     "iron-flex-layout": "PolymerElements/iron-flex-layout#^2.0.0",
     "paper-dialog": "PolymerElements/paper-dialog#^2.0.0",
     "paper-dialog-scrollable": "PolymerElements/paper-dialog-scrollable#^2.0.0",
