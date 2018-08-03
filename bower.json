@@ -1,7 +1,7 @@
 {
   "name": "styled-dialog",
   "description": "A Polymer Element showing a styled modal dialog.",
-  "version": "2.2.2",
+  "version": "2.2.4",
   "authors": ["Next Century Corporation"],
   "license": "Apache-2.0",
   "keywords": ["web-component", "polymer"],
@@ -10,7 +10,8 @@
   "ignore": ["/.*", "/test/"],
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.2",
-    "fontawesome-iconset": "../fontawesome-iconset",
+    "fontawesome-iconset":
+      "NextCenturyCorporation/polymer-fontawesome-iconset#d2afc78a06295aacfd8a434e0dfa54164715529e",
     "icon-button": "usc-isi-digelements/icon-button#^2.0.2",
     "iron-flex-layout": "PolymerElements/iron-flex-layout#^2.0.0",
     "paper-dialog": "PolymerElements/paper-dialog#^2.0.0",
